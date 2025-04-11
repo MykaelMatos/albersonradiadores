@@ -1,8 +1,8 @@
-
 import React, { useState, useRef } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import { Service, loadServices, saveServices, loadHeroImages, saveHeroImages } from '@/data/servicesData';
-import { X, Plus, Upload, ImageIcon } from 'lucide-react';
+import { X, Plus, Upload, ImageIcon, Video } from 'lucide-react';
+import VideoEmbed from '@/components/VideoEmbed';
 
 const ContentTab = () => {
   const { toast } = useToast();
@@ -11,6 +11,7 @@ const ContentTab = () => {
   const [newImage, setNewImage] = useState('');
   const [newHeroImage, setNewHeroImage] = useState('');
   const [logoUrl, setLogoUrl] = useState<string>('');
+  const [newVideo, setNewVideo] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const heroFileInputRef = useRef<HTMLInputElement>(null);
   const logoFileInputRef = useRef<HTMLInputElement>(null);
@@ -177,6 +178,49 @@ const ContentTab = () => {
     });
   };
 
+  const addVideoToService = (serviceId: string) => {
+    if (!newVideo) return;
+    
+    const updatedServices = services.map(service => {
+      if (service.id === serviceId) {
+        return {
+          ...service,
+          videos: [...service.videos, newVideo]
+        };
+      }
+      return service;
+    });
+    
+    setServices(updatedServices);
+    saveServices(updatedServices);
+    setNewVideo('');
+    toast({
+      title: "Vídeo adicionado",
+      description: "O novo vídeo foi adicionado ao serviço",
+    });
+  };
+
+  const removeVideoFromService = (serviceId: string, videoIndex: number) => {
+    const updatedServices = services.map(service => {
+      if (service.id === serviceId) {
+        const newVideos = [...service.videos];
+        newVideos.splice(videoIndex, 1);
+        return {
+          ...service,
+          videos: newVideos
+        };
+      }
+      return service;
+    });
+    
+    setServices(updatedServices);
+    saveServices(updatedServices);
+    toast({
+      title: "Vídeo removido",
+      description: "O vídeo foi removido do serviço",
+    });
+  };
+
   return (
     <>
       <div className="bg-white rounded-lg shadow-md p-6 mb-8">
@@ -322,7 +366,7 @@ const ContentTab = () => {
               ))}
             </div>
             
-            <div className="space-y-4">
+            <div className="space-y-4 mb-8">
               <div className="flex space-x-2">
                 <input
                   type="url"
@@ -355,6 +399,38 @@ const ContentTab = () => {
                   Carregar imagem do seu computador
                 </button>
               </div>
+            </div>
+            
+            <h4 className="font-bold mb-3">Vídeos</h4>
+            <div className="space-y-4 mb-4">
+              {service.videos.map((videoUrl, index) => (
+                <div key={index} className="relative border rounded overflow-hidden">
+                  <VideoEmbed videoUrl={videoUrl} />
+                  <button
+                    onClick={() => removeVideoFromService(service.id, index)}
+                    className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
+                  >
+                    <X size={16} />
+                  </button>
+                </div>
+              ))}
+            </div>
+            
+            <div className="flex space-x-2">
+              <input
+                type="url"
+                placeholder="URL do vídeo do YouTube (ex: https://youtu.be/abc123)"
+                className="flex-1 p-2 border rounded"
+                value={newVideo}
+                onChange={(e) => setNewVideo(e.target.value)}
+              />
+              <button
+                onClick={() => addVideoToService(service.id)}
+                className="bg-brandPurple text-white py-2 px-4 rounded hover:bg-brandPurpleLight flex items-center"
+              >
+                <Video size={18} className="mr-2" />
+                <span>Adicionar</span>
+              </button>
             </div>
           </div>
         ))}

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import ServiceSlideshow from '../ServiceSlideshow';
+import VideoEmbed from '../VideoEmbed';
 import { Service, loadServices } from '../../data/servicesData';
 
 const ServicesSection = () => {
@@ -25,6 +26,22 @@ const ServicesSection = () => {
                 </div>
                 <div className="md:w-1/2">
                   <ServiceSlideshow images={service.images} />
+                  
+                  {/* Exibir vídeos, se houver */}
+                  {service.videos.length > 0 && (
+                    <div className="mt-4">
+                      <h4 className="font-medium mb-2">Vídeos</h4>
+                      <div className="space-y-4">
+                        {service.videos.map((video, index) => (
+                          <VideoEmbed 
+                            key={index} 
+                            videoUrl={video}
+                            className="border-2 border-brandPurple rounded-lg"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

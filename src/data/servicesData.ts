@@ -7,6 +7,7 @@ export interface Service {
   title: string;
   description: string;
   images: string[];
+  videos: string[]; // Nova propriedade para armazenar URLs de vídeos
 }
 
 export const initialServices: Service[] = [
@@ -18,6 +19,7 @@ export const initialServices: Service[] = [
       "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80&w=500&h=300",
       "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=500&h=300"
     ],
+    videos: [],
   },
   {
     id: "limpeza-tecnica",
@@ -27,6 +29,7 @@ export const initialServices: Service[] = [
       "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=500&h=300",
       "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=500&h=300"
     ],
+    videos: [],
   },
   {
     id: "solda-aluminio",
@@ -36,6 +39,7 @@ export const initialServices: Service[] = [
       "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=500&h=300",
       "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=500&h=300"
     ],
+    videos: [],
   },
   {
     id: "limpeza-quimica",
@@ -45,6 +49,7 @@ export const initialServices: Service[] = [
       "https://images.unsplash.com/photo-1526374965328-7f61d2c6f44d?auto=format&fit=crop&q=80&w=500&h=300",
       "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=500&h=300"
     ],
+    videos: [],
   },
   {
     id: "solda-radiador",
@@ -54,6 +59,7 @@ export const initialServices: Service[] = [
       "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&q=80&w=500&h=300",
       "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80&w=500&h=300"
     ],
+    videos: [],
   },
 ];
 
