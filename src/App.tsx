@@ -8,7 +8,6 @@ import { AuthProvider } from "./context/AuthContext";
 import HomePage from "./pages/Index";
 import AdminLoginPage from "./pages/AdminLogin";
 import AdminDashboardPage from "./pages/AdminDashboard";
-import UserRegistrationPage from "./pages/UserRegistration";
 import ForgotPasswordPage from "./pages/ForgotPassword";
 import NotFound from "./pages/NotFound";
 
@@ -25,7 +24,6 @@ const App = () => (
             <Route path="/" element={<HomePage />} />
             <Route path="/admin" element={<AdminLoginPage />} />
             <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
-            <Route path="/register" element={<UserRegistrationPage />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

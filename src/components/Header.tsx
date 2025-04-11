@@ -3,17 +3,30 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+  // Get logo from localStorage if it exists
+  const logoUrl = localStorage.getItem('siteLogoUrl') || '';
+  
   return (
     <header className="bg-brandPurple text-brandYellow py-6 shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-center md:text-left mb-4 md:mb-0">
-            <h1 className="text-3xl md:text-4xl font-bold text-brandYellow">
-              Alberson Radiadores
-            </h1>
-            <p className="text-brandYellow/80 mt-1 font-light">
-              Especializada em Radiadores
-            </p>
+            {logoUrl ? (
+              <img 
+                src={logoUrl} 
+                alt="Alberson Radiadores Logo" 
+                className="h-16 md:h-20 mx-auto md:mx-0"
+              />
+            ) : (
+              <div>
+                <h1 className="text-3xl md:text-4xl font-bold text-brandYellow">
+                  Alberson Radiadores
+                </h1>
+                <p className="text-brandYellow/80 mt-1 font-light">
+                  Especializada em Radiadores
+                </p>
+              </div>
+            )}
           </div>
           <div>
             <Link 
