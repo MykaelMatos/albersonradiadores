@@ -6,43 +6,43 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 300 100% 25%;
+    --foreground: 262 49% 46%;
 
     --card: 0 0% 100%;
-    --card-foreground: 300 100% 25%;
+    --card-foreground: 262 49% 46%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 300 100% 25%;
+    --popover-foreground: 262 49% 46%;
 
-    --primary: 300 100% 25%;
-    --primary-foreground: 60 100% 50%;
+    --primary: 262 49% 46%;
+    --primary-foreground: 47 100% 63%;
 
-    --secondary: 60 100% 50%;
-    --secondary-foreground: 300 100% 25%;
+    --secondary: 47 100% 63%;
+    --secondary-foreground: 262 49% 46%;
 
-    --muted: 300 15% 90%;
-    --muted-foreground: 300 25% 35%;
+    --muted: 262 15% 90%;
+    --muted-foreground: 262 25% 35%;
 
-    --accent: 60 80% 80%;
-    --accent-foreground: 300 100% 25%;
+    --accent: 47 80% 80%;
+    --accent-foreground: 262 49% 46%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 300 20% 80%;
-    --input: 300 20% 80%;
-    --ring: 300 100% 25%;
+    --border: 262 20% 80%;
+    --input: 262 20% 80%;
+    --ring: 262 49% 46%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 300 100% 25%;
-    --sidebar-foreground: 60 100% 50%;
-    --sidebar-primary: 60 100% 50%;
-    --sidebar-primary-foreground: 300 100% 25%;
-    --sidebar-accent: 300 50% 35%;
-    --sidebar-accent-foreground: 60 100% 50%;
-    --sidebar-border: 300 50% 35%;
-    --sidebar-ring: 60 100% 50%;
+    --sidebar-background: 262 49% 46%;
+    --sidebar-foreground: 47 100% 63%;
+    --sidebar-primary: 47 100% 63%;
+    --sidebar-primary-foreground: 262 49% 46%;
+    --sidebar-accent: 262 50% 35%;
+    --sidebar-accent-foreground: 47 100% 63%;
+    --sidebar-border: 262 50% 35%;
+    --sidebar-ring: 47 100% 63%;
   }
 }
 
@@ -52,8 +52,8 @@
   }
 
   body {
-    @apply bg-gray-100 text-foreground;
-    font-family: Arial, sans-serif;
+    @apply bg-gray-50 text-foreground;
+    font-family: 'Poppins', Arial, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -63,15 +63,15 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-brandPurple text-brandYellow px-6 py-2 rounded-md font-semibold hover:bg-brandPurpleLight transition-colors;
+    @apply bg-brandPurple text-brandYellow px-6 py-3 rounded-lg font-semibold hover:bg-brandPurpleLight shadow-md hover:shadow-lg transition-all duration-300;
   }
 
   .btn-secondary {
-    @apply bg-brandYellow text-brandPurple px-6 py-2 rounded-md font-semibold hover:bg-brandYellowDark transition-colors;
+    @apply bg-brandYellow text-brandPurple px-6 py-3 rounded-lg font-semibold hover:bg-brandYellowDark shadow-md hover:shadow-lg transition-all duration-300;
   }
 
   .nav-link {
-    @apply inline-block px-4 py-2 text-brandPurple font-medium transition-colors hover:text-brandPurpleLight;
+    @apply inline-block px-4 py-2 text-brandPurple font-medium transition-colors hover:text-brandPurpleLight relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brandPurple hover:after:w-full after:transition-all after:duration-300;
   }
   
   .section-container {
@@ -79,11 +79,15 @@
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-center mb-12 text-brandPurple;
+    @apply text-3xl md:text-4xl font-bold text-center mb-12 text-brandPurple relative;
+  }
+  
+  .section-title::after {
+    @apply content-[''] absolute left-1/2 -translate-x-1/2 bottom-0 w-24 h-1 bg-brandYellow;
   }
   
   .slideshow-container {
-    @apply relative overflow-hidden rounded-lg shadow-lg;
+    @apply relative overflow-hidden rounded-xl shadow-lg;
   }
   
   .slide {
@@ -95,11 +99,11 @@
   }
   
   .slideshow-navigation {
-    @apply absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2;
+    @apply absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-3;
   }
   
   .slideshow-dot {
-    @apply w-3 h-3 rounded-full bg-white/50 cursor-pointer;
+    @apply w-3 h-3 rounded-full bg-white/50 cursor-pointer transition-all duration-300 hover:bg-white;
   }
   
   .slideshow-dot.active {
@@ -107,7 +111,7 @@
   }
 
   .service-card {
-    @apply bg-white rounded-lg shadow-lg p-6 transition-transform hover:-translate-y-1;
+    @apply bg-white rounded-xl shadow-md p-6 transition-all duration-300 hover:shadow-xl border-t-4 border-brandYellow hover:-translate-y-1;
   }
 }
 

@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,11 +62,10 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors
-				brandPurple: "#800080",
-				brandYellow: "#FFFF00",
-				brandPurpleLight: "#9932CC",
-				brandYellowDark: "#FFD700",
+				brandPurple: "#6A3AB2",
+				brandYellow: "#FFD143",
+				brandPurpleLight: "#8A5FD3",
+				brandYellowDark: "#E6B800",
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
